@@ -7,6 +7,9 @@ metadata:
     app: gitops-example
   annotations:
     # Container Image Automated Updates
+    # 其中annotations部分的fluxcd.io/automated: “true“是设置Flux可以根据部署文件中更新后的image
+    # url自动更新应用镜像。关于Deployment文件针对Flux更多的annotations配置参数请参考官方说明文档。
+    # https://docs.fluxcd.io/en/latest/references/automated-image-update/
     fluxcd.io/automated: "true"
 spec:
   selector:
@@ -20,8 +23,7 @@ spec:
     spec:
       containers:
       - name: gitops-example
-        image: <your image URL>
+        image: 836772636910.dkr.ecr.cn-north-1.amazonaws.com.cn/gitops-app-demo:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
-
